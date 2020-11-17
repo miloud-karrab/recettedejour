@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+
+  <div class="container mt50">
+  <div class="row">
+    <div class="col-12">
+        <span class="heading">RECETTE DE JOUR, LEADER DE LA MENU ET PLAT LIVRÉE ET À EMPORTER </span>
+    </div>
+  </div>
+<span class="start-order">Commander en ligne</span>
+
+    <div class="row flex">
+    {% for menu in recettes %}
+      <div class="col-3">
+        <div class="card">
+        <div class="card-body">
+           <h5 class="card-title">
+<a href="{{path('menu.show', {id: menu.id, slug:menu.slug})}}">{{menu.NomRecette}}</a>
+           </h5>
+        </div>
+<p class="card-text">{{menu.DescriptionRecette}}</p>
+<div class="text-primary">
+  {{menu.price}} DT
+</div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

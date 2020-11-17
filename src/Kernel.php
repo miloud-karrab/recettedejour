@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
+
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
@@ -21,8 +22,10 @@ class Kernel extends BaseKernel
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
+
             }
         }
+
     }
 
     public function getProjectDir(): string
